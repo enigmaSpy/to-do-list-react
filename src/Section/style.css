@@ -1,0 +1,10 @@
+.main__title{
+    font-size: 0.9rem;
+    margin:  25px 0;
+}
+.main__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
