@@ -1,21 +1,18 @@
-import {useState} from 'react';
 import './style.css';
 
-const Tasks = ({ tasksList, hideDone }) => {    
+const Tasks = ({ tasks, hideDone, removeTask }) => {    
     return (
-        <ul className="main__tasksList">
-       
-            {tasksList.map(task => (
+        <ul className="main__tasks">       
+            {tasks.map(({id,content,done}) => (
 
-
-                <li key={task.id} className={`main__taskItem ${task.done && hideDone ? "main__taskItem--hidden" : ""}`}>
+                <li key={id} className={`main__taskItem ${done && hideDone ? "main__taskItem--hidden" : ""}`}>
                     <button className="main__taskBtn main__taskDoneBtn--js" >
-                        {!task.done ? "✔️" : "❌"}
+                        {!done ? "✔️" : "❌"}
                     </button>
-                    <span className={`main__taskName ${task.done ? "main__taskName--done" : ""}`}>
-                        {task.content}
+                    <span className={`main__taskName ${done ? "main__taskName--done" : ""}`}>
+                        {content}
                     </span>
-                    <button className="main__taskBtn main__taskDeleteBtn--js">🗑️</button>
+                    <button className="main__taskBtn main__taskDeleteBtn--js" onClick={() => removeTask(id)} >🗑️</button>
                 </li>
             ))}
         </ul>

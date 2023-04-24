@@ -1,9 +1,9 @@
 import './style.css';
 
-const Buttons = ({ tasksList, hideDone, toggleHideDone }) => {
-    let isEveryDone = tasksList.every(({ done }) => done);
+const Buttons = ({ tasks, hideDone, toggleHideDone }) => {
+    let isEveryDone = tasks.every(({ done }) => done);
 
-    return tasksList.length > 0 && (
+    return tasks.length > 0 && (
         <div className="main__buttonWrapper">
             <button onClick={toggleHideDone} className="main__settingBtn" >
                 {hideDone ? "Pokaż" : "Ukryji"} ukończone
