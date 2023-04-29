@@ -1,8 +1,0 @@
-.main__buttonWrapper{
-    display: flex;
-    justify-content: space-between;
-}
-.main__settingBtn:hover{
-    cursor: pointer;
-
-}

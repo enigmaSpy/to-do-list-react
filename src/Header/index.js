@@ -1,8 +1,8 @@
-import './style.css'
+import { Title } from "./styled";
 
 const Header = () => (
-    <header className="header">
-        <h1 className="header__title">To-Do Lista</h1>
+    <header>
+        <Title>To-Do Lista</Title>
     </header>
 );
 

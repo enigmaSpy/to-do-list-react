@@ -1,13 +1,17 @@
-import { useState,useRef } from 'react';
-import './style.css';
+import { useState, useRef } from 'react';
+import { FormContent, InputWrapper, TaskInput, Button, StatusAlert } from './styled';
 const Form = ({ addNewTask }) => {
+
   const [newTaskContent, setNewTaskContent] = useState("");
   const [isValid, setIsValid] = useState(true);
   const inputFocus = useRef(null);
+
   const setFocus = () => {
     inputFocus.current.focus();
   };
+
   const requiredLength = 3;
+
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (!(newTaskContent.trim().length >= requiredLength)) {
@@ -17,28 +21,28 @@ const Form = ({ addNewTask }) => {
     setIsValid(true);
     addNewTask(newTaskContent.trim());
     setNewTaskContent("");
-  }
+  };
+
   return (
-    <form action="" className="form" onSubmit={onFormSubmit}>
-      <div className="form__inputWrapper">
-        <input
+    <FormContent action="" onSubmit={onFormSubmit}>
+      <InputWrapper>
+        <TaskInput
           ref={inputFocus}
           value={newTaskContent}
           type="text"
           name="newTask"
-          className="form__taskInput"
           placeholder="Zadanie..."
           onChange={({ target }) => {
             setNewTaskContent(target.value);
           }}
         />
 
-        <button onClick={setFocus} type="submit" className="form__addTaskBtn">
+        <Button onClick={setFocus} type="submit">
           Dodaj
-        </button>
-      </div>
-      <div className={`form__statusAlert ${!isValid ? "form__statusAlert--active": ""}`}  >Tekst musi mieć co najmniej 3 znaki</div> 
-    </form>
+        </Button>
+      </InputWrapper>
+      <StatusAlert active={!isValid} >Tekst musi mieć co najmniej 3 znaki</StatusAlert>
+    </FormContent>
   )
 }
 export default Form;
