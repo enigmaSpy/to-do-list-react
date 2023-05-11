@@ -1,6 +1,6 @@
 import { List, Item, Button, ItemText } from "./styled.js"
 
-const Tasks = ({ tasks, hideDone, removeTask, toggleDone }) => {
+const TaskList = ({ tasks, hideDone, removeTask, toggleDone }) => {
     return (
         <List>
             {tasks.map(({ id, content, done }) => (
@@ -20,4 +20,4 @@ const Tasks = ({ tasks, hideDone, removeTask, toggleDone }) => {
     )
 };
 
-export default Tasks;
+export default TaskList;
