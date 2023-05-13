@@ -1,10 +1,16 @@
 import { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { FormContent, InputWrapper, TaskInput, Button, StatusAlert } from './styled';
-const Form = ({ addNewTask }) => {
+import { addTask } from '../tasksSlice';
+import { nanoid } from '@reduxjs/toolkit';
+
+const Form = () => {
 
   const [newTaskContent, setNewTaskContent] = useState("");
   const [isValid, setIsValid] = useState(true);
   const inputFocus = useRef(null);
+
+  const dispatch = useDispatch();
 
   const setFocus = () => {
     inputFocus.current.focus();
@@ -18,8 +24,14 @@ const Form = ({ addNewTask }) => {
       setIsValid(false);
       return false;
     }
+
+    dispatch(addTask({
+      content: newTaskContent.trim(),
+      done:false,
+      id: nanoid()
+    }));
+    
     setIsValid(true);
-    addNewTask(newTaskContent.trim());
     setNewTaskContent("");
   };
 
